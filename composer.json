@@ -1,6 +1,6 @@
 {
     "name": "aluisio-pires/laravel-dynamic-forms",
-    "description": "Base Test for your Laravel feature tests.",
+    "description": "Dynamic Forms for Laravel with validations.",
     "license": "MIT",
     "support": {
         "issues": "https://github.com/Aluisio-Pires/LaravelDynamicForms/issues",
