@@ -40,24 +40,32 @@ class InstallCommand extends Command
         }
 
         if ($all || $models) {
+            $this->makeDirectory('/app/Models');
+
             $this->copyFromStubs('/app/Models/Field.php');
             $this->copyFromStubs('/app/Models/Form.php');
             $this->copyFromStubs('/app/Models/Validation.php');
         }
 
         if ($all || $traits) {
+            $this->makeDirectory('/app/Traits');
+
             $this->copyFromStubs('/app/Traits/HasForms.php');
         }
 
         if ($all || $migrations) {
-            $this->copyFromStubs('/app/database/migrations/2023_00_00_000000_create_forms_table.php');
-            $this->copyFromStubs('/app/database/migrations/2023_00_00_000001_create_fields_table.php');
-            $this->copyFromStubs('/app/database/migrations/2023_00_00_000002_create_form_field_table.php');
-            $this->copyFromStubs('/app/database/migrations/2023_00_00_000003_create_validations_table.php');
-            $this->copyFromStubs('/app/database/migrations/2023_00_00_000004_create_form_field_form_field_validation_table.php');
-            $this->copyFromStubs('/app/database/migrations/2023_00_00_000005_create_fildables_table.php');
+            $this->makeDirectory('/database');
+            $this->makeDirectory('/database/migrations');
+
+            $this->copyFromStubs('/database/migrations/2023_00_00_000000_create_forms_table.php');
+            $this->copyFromStubs('/database/migrations/2023_00_00_000001_create_fields_table.php');
+            $this->copyFromStubs('/database/migrations/2023_00_00_000002_create_form_field_table.php');
+            $this->copyFromStubs('/database/migrations/2023_00_00_000003_create_validations_table.php');
+            $this->copyFromStubs('/database/migrations/2023_00_00_000004_create_form_field_form_field_validation_table.php');
+            $this->copyFromStubs('/database/migrations/2023_00_00_000005_create_fildables_table.php');
         }
 
+        echo("All files created!");
         return 0;
     }
 
@@ -78,5 +86,11 @@ class InstallCommand extends Command
     protected function copyFromStubs($path){
         $stubs = $this->getTestStubsPath();
         copy($stubs.$path, base_path($path));
+    }
+
+    protected function makeDirectory($path){
+        if(!file_exists(base_path().$path)) {
+            mkdir(base_path().$path);
+        }
     }
 }
