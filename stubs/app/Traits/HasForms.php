@@ -113,7 +113,7 @@ trait HasForms
 
         if (!empty($exceptions)) {
             throw ValidationException::withMessages(array_map(function ($key) {
-                return "O campo {$key} não existe";
+                return "The field {$key} does not exist";
             }, $exceptions));
         }
 
