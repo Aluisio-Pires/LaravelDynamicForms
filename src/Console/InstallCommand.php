@@ -1,6 +1,6 @@
 <?php
 
-namespace AluisioPires\LaravelDynamicForms\Console;
+namespace App\Console;
 
 use Illuminate\Console\Command;
 
