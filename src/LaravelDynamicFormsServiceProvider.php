@@ -1,6 +1,6 @@
 <?php
 
-namespace MeuPackage;
+namespace AluisioPires\LaravelDynamicForms;
 
 use AluisioPires\LaravelDynamicForms\Console\InstallCommand;
 use Illuminate\Support\ServiceProvider;
